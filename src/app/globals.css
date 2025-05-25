@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #00f0ff;
+  --accent-dark: #00bfc8;
+  --secondary: #444444;
+  --border: #333333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Scroll Animations */
+[data-animate="translate-y-16"] {
+  transform: translateY(4rem);
+}
+
+[data-animate="-translate-y-16"] {
+  transform: translateY(-4rem);
+}
+
+[data-animate="translate-x-16"] {
+  transform: translateX(4rem);
+}
+
+[data-animate="-translate-x-16"] {
+  transform: translateX(-4rem);
+}
+
+/* Logo styles */
+.ctrl-logo {
+  filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5));
+}
+
+.ctrl-logo circle {
+  transition: all 0.3s ease;
+}
+
+/* Header styles */
+header {
+  transition: all 0.3s ease-in-out;
+}
+
+header nav a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Feature Card Hover Effects */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(0, 240, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px 2px rgba(0, 240, 255, 0.4);
+  }
+}
+
+.feature-card-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Interactive feature animations */
+.feature-item-active {
+  position: relative;
+}
+
+.feature-item-active::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px 2px var(--accent);
+}
+
+/* Futuristic styles */
+.neon-border {
+  box-shadow: 0 0 5px var(--accent), 0 0 15px var(--accent-dark);
+}
+
+.glass-effect {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
