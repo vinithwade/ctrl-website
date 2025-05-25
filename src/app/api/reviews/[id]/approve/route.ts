@@ -6,7 +6,7 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = params.id;
+    const { id } = params;
     if (!id) {
       return NextResponse.json(
         { error: 'Review ID is required' },

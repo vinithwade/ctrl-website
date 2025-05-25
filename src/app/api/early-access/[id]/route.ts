@@ -6,7 +6,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = params.id;
+    const { id } = params;
     if (!id) {
       return NextResponse.json(
         { error: 'Request ID is required' },
