@@ -56,7 +56,7 @@ body {
 
 /* Logo styles */
 .ctrl-logo {
-  filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5));
+  /* Removed the blue glow effect */
 }
 
 .ctrl-logo circle {

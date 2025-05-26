@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
       
       <ScrollAnimation direction="down" delay={300}>
         <div className="mb-12 float-animation">
-          <Logo size="lg" className="scale-[2.5] mb-6" />
+          <Logo size="lg" className="scale-[3.5] mb-6" />
         </div>
       </ScrollAnimation>
 
