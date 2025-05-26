@@ -24,16 +24,16 @@ export async function POST(req: NextRequest) {
       );
     }
     
-    // Insert into database
+    // Insert into database - set is_approved to TRUE for automatic approval
     const result = await db.run(
       'INSERT INTO reviews (name, title, rating, comment, is_approved) VALUES (?, ?, ?, ?, ?)',
-      [data.name, data.title || null, rating, data.comment, false]
+      [data.name, data.title || null, rating, data.comment, true]
     );
     
     return NextResponse.json({ 
       success: true,
       id: result.lastID,
-      message: 'Thank you for your review! It will be displayed after approval.'
+      message: 'Thank you for your review! It is now displayed on the site.'
     });
   } catch (error) {
     console.error('Error saving review:', error);

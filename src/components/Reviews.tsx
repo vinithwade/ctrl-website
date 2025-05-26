@@ -29,52 +29,52 @@ const Reviews: React.FC = () => {
   });
 
   // Fetch reviews from API
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch('/api/reviews');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch reviews');
-        }
-        
-        const data = await response.json();
-        setReviews(data);
-      } catch (error) {
-        console.error('Error fetching reviews:', error);
-        // Fallback to sample reviews if API fails
-        setReviews([
-          {
-            id: '1',
-            name: 'Alex Thompson',
-            title: 'Product Designer',
-            rating: 5,
-            comment: 'CTRL revolutionized our workflow. The seamless integration between design and code has cut our development time in half.',
-            created_at: '2023-06-15T10:30:00Z'
-          },
-          {
-            id: '2',
-            name: 'Sarah Chen',
-            title: 'Frontend Developer',
-            rating: 5,
-            comment: 'As someone who codes, I was skeptical. But CTRL generates clean, maintainable code that I can actually work with. Game changer!',
-            created_at: '2023-07-22T14:20:00Z'
-          },
-          {
-            id: '3',
-            name: 'Marcus Johnson',
-            title: 'Startup Founder',
-            rating: 4,
-            comment: 'We launched our MVP in weeks instead of months. The visual programming features are intuitive enough for our non-technical team members.',
-            created_at: '2023-08-10T09:15:00Z'
-          }
-        ]);
-      } finally {
-        setIsLoading(false);
+  const fetchReviews = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/reviews');
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch reviews');
       }
-    };
-    
+      
+      const data = await response.json();
+      setReviews(data);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+      // Fallback to sample reviews if API fails
+      setReviews([
+        {
+          id: '1',
+          name: 'Alex Thompson',
+          title: 'Product Designer',
+          rating: 5,
+          comment: 'CTRL revolutionized our workflow. The seamless integration between design and code has cut our development time in half.',
+          created_at: '2023-06-15T10:30:00Z'
+        },
+        {
+          id: '2',
+          name: 'Sarah Chen',
+          title: 'Frontend Developer',
+          rating: 5,
+          comment: 'As someone who codes, I was skeptical. But CTRL generates clean, maintainable code that I can actually work with. Game changer!',
+          created_at: '2023-07-22T14:20:00Z'
+        },
+        {
+          id: '3',
+          name: 'Marcus Johnson',
+          title: 'Startup Founder',
+          rating: 4,
+          comment: 'We launched our MVP in weeks instead of months. The visual programming features are intuitive enough for our non-technical team members.',
+          created_at: '2023-08-10T09:15:00Z'
+        }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  useEffect(() => {
     fetchReviews();
   }, []);
 
@@ -125,7 +125,7 @@ const Reviews: React.FC = () => {
         isSubmitting: false,
         isSubmitted: true,
         error: null,
-        message: result.message || 'Thank you for your review! It will be displayed after approval.'
+        message: result.message || 'Thank you for your review! It is now displayed on the site.'
       });
       
       setNewReview({
@@ -134,6 +134,9 @@ const Reviews: React.FC = () => {
         rating: 5,
         comment: '',
       });
+      
+      // Refresh the reviews list to show the new review
+      fetchReviews();
       
     } catch (error) {
       console.error('Error submitting review:', error);
