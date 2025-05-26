@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
@@ -18,18 +19,14 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
 
   return (
     <div className={`relative ${className}`} style={{ width, height }}>
-      <svg 
-        width={width} 
-        height={height} 
-        viewBox="0 0 100 100" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
+      <Image
+        src="/images/ctrllogo.png"
+        alt="CTRL Logo"
+        width={width}
+        height={height}
         className="ctrl-logo"
-      >
-        <circle cx="50" cy="50" r="50" fill="black" />
-        <circle cx="50" cy="50" r="40" stroke="white" strokeWidth="8" fill="black" />
-        <circle cx="50" cy="50" r="18" stroke="white" strokeWidth="8" fill="black" />
-      </svg>
+        priority
+      />
     </div>
   );
 };
