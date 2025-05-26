@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
 
+interface RouteParams {
+  params: {
+    id: string;
+  };
+}
+
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: RouteParams
 ) {
   try {
-    const { id } = await params;
+    const { id } = params;
     if (!id) {
       return NextResponse.json(
         { error: 'Request ID is required' },
