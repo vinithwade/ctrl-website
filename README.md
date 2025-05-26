@@ -2,6 +2,8 @@
 
 A modern website showcasing the CTRL application builder - a bi-directional no-code/low-code platform.
 
+> Last updated: June 2024 - Fixed API route handlers for admin dashboard functionality
+
 ## Features
 
 - Modern, responsive design
